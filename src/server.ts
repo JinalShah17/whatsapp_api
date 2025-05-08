@@ -1,23 +1,16 @@
-import express, { Express, Request, Response } from "express";
-
+// src/server.ts
+import express from "express";
 import dotenv from "dotenv";
-import rootRouters from "./routes/index";
+import rootRouters from "./routes";
 
 dotenv.config();
 
-const app: Express = express();
-
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-
-app.use("/healthcheck", (req: Request, res: Response, next) => {
-  res.status(200).json({ message: "Server is running", success: true });
-  next();
-});
-
 app.use("/", rootRouters);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
