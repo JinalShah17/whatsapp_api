@@ -1,11 +1,11 @@
 // src/routes/webhookRoutes.ts
 import express from "express";
 
-import { sendMessage, getWebhook } from "../controllers/webhookController";
+import { getMessage, verifyWebhook } from "../controllers/webhookController";
 
 const router = express.Router();
 
-router.post("/", sendMessage);
-router.get("/", getWebhook);
+router.post("/", getMessage);
+router.get("/", verifyWebhook);
 
 export default router;
