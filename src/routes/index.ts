@@ -4,6 +4,6 @@ import webhookRoutes from "./webhooks";
 
 const router = express.Router();
 
-router.use("/webhook", webhookRoutes);
+router.use("/test", webhookRoutes);
 
 export default router;
