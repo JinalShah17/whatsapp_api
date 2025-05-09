@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+import { errorHandler } from "./middlewares/errorHandler.middleware";
+
 // Add this route to handle verification
 app.get("/webhook", (req, res) => {
   const mode = req.query["hub.mode"];
@@ -71,6 +73,8 @@ app.use("/", rootRouters);
 app.get("/healthcheck", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
