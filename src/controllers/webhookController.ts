@@ -11,11 +11,17 @@ export const sendMessage = async (
 
   try {
     const response = await axios.post(
-      `https://graph.facebook.com/v19.0/${process.env.PHONE_NUMBER_ID}/messages`,
+      `https://graph.facebook.com/v22.0/704866496024822/messages`,
       {
         messaging_product: "whatsapp",
-        to,
-        text: { body: message }
+        to: "918238852545",
+        type: "template",
+        template: {
+          name: "hello_world",
+          language: {
+            code: "en_US"
+          }
+        }
       },
       {
         headers: {
